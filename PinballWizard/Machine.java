@@ -1,5 +1,6 @@
 package PinballWizard;
 
+import PinballWizard.Commands.*;
 import PinballWizard.Components.Ball;
 import PinballWizard.Components.Flipper;
 import PinballWizard.Components.Plunger;
@@ -74,6 +75,13 @@ public class Machine {
 
     public void shootBall() {
         plunger.shootBall();
+        
+        Ball ball = new Ball();
+        ball.setHitElement(new PlungerCommand(plunger));
+        ball.hitElement();
+
+        ball.setHitElement(new TrapHoleCommand(new TrapHole()));
+        ball.hitElement();
     }
 
     public void hitLeftFlipper() {

@@ -1,17 +1,13 @@
 package PinballWizard.Components.TableElements;
 
-public class Bumper implements TableElement {
+public class Bumper implements TableElement{
 
     private boolean isLightOn = false;
 
-    @Override
     public void isHit() {
-        //Do the Command Mister AF
         isLightOn = true;
+        System.out.println("Bumper hit!");
+        System.out.println("Bumper light turned on!");
     }
-
-    @Override
-    public void doAction() {
-
-    }
+    public void doAction(){ System.out.println("Bumper does action!"); }
 }

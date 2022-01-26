@@ -1,9 +1,5 @@
 package PinballWizard;
 
-import PinballWizard.Commands.MachineCommand;
-import PinballWizard.Commands.GameCommand;
-import PinballWizard.Components.TableElements.Bumper;
-
 public class Main {
     public static void main(String[] args) {
 

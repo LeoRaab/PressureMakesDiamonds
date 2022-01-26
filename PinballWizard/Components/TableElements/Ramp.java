@@ -1,13 +1,7 @@
 package PinballWizard.Components.TableElements;
 
-public class Ramp implements TableElement {
-    @Override
-    public void isHit() {
+public class Ramp implements TableElement{
 
-    }
-
-    @Override
-    public void doAction() {
-
-    }
+    public void isHit() { System.out.println("Ramp hit!"); }
+    public void doAction(){ System.out.println("Ramp does action!"); }
 }
