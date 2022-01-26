@@ -12,6 +12,7 @@ public class Player {
 
     public void startGame() {
         game.nextState();
+        machine.addBalls();
         machine.shootBall();
     }
 

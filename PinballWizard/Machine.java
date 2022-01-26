@@ -69,19 +69,38 @@ public class Machine {
         balls.remove(balls.size() - 1);
     }
 
-    public int getNumberOfBalls() {
-        return balls.size();
+    public Ball useRandomBall() {
+        return balls.get((int) Math.floor(Math.random() * balls.size()));
+    }
+
+    public TableElement useRandomTableElement() {
+        return tableElements.get((int) Math.floor(Math.random() * tableElements.size()));
+    }
+
+    public void setTableElementAction(TableElement randomTableElement) {
+        if (randomTableElement.getClass() == TrapHole.class) {
+            System.out.println("Oh no, it's a trap hole!");
+        } // and so on ...
     }
 
     public void shootBall() {
-        plunger.shootBall();
-        
-        Ball ball = new Ball();
-        ball.setHitElement(new PlungerCommand(plunger));
-        ball.hitElement();
 
-        ball.setHitElement(new TrapHoleCommand(new TrapHole()));
-        ball.hitElement();
+        Ball currentBall = useRandomBall();
+
+        plunger.shootBall();
+
+        /*
+        We basically wanted to create <insertClassName>Command with the tableElement but failed ...
+
+        TableElement randomTableElement = useRandomTableElement();
+        setTableElementAction(randomTableElement);
+
+        ... use that Class's command and execute that
+         */
+
+        currentBall.setHitElement(new PlungerCommand(plunger));
+        currentBall.hitElement();
+
     }
 
     public void hitLeftFlipper() {
