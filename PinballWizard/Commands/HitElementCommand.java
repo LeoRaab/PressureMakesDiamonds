@@ -1,5 +1,5 @@
 package PinballWizard.Commands;
 
-public interface PlayGameCommandInterface {
+public interface HitElementCommand {
     public void execute();
 }

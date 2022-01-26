@@ -1,8 +1,6 @@
 package PinballWizard;
 
-import PinballWizard.Commands.PlayGameCommandInterface;
-import PinballWizard.Commands.UseMachineCommandInterface;
-import PinballWizard.Machine;
+import PinballWizard.Components.Ball;
 
 import static PinballWizard.States.GameState.game;
 import static PinballWizard.States.GameState.machine;
