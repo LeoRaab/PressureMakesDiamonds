@@ -1,16 +1,13 @@
 package PinballWizard.Commands;
 
+import PinballWizard.Components.Ball;
 import PinballWizard.Components.TableElements.Ramp;
 
 public class RampCommand implements HitElementCommand {
-    private Ramp ramp;
+    private final Ramp ramp = new Ramp();
 
-    public RampCommand(Ramp ramp) {
-        this.ramp = ramp;
-    }
-
-    public void execute() {
+    public void execute(Ball ball) {
         ramp.isHit();
-        ramp.doAction();
+        ramp.doAction(ball);
     }
 }

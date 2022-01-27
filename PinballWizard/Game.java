@@ -6,7 +6,7 @@ import PinballWizard.States.NoCreditState;
 public class Game {
 
     private static Game instance = null;
-    private GameState state = new NoCreditState();
+    private GameState state;
     private Integer points = 0;
 
     private Game() {

@@ -1,10 +1,11 @@
 package PinballWizard.Display;
 
 public interface DisplayFactory {
-    void displayBallOne();
-    void displayBallTwo();
-    void displayBallThree();
+    void displayNoCredit();
     void displayStartGame();
+    void displayPlaying();
     void displayGameOver();
-
+    void displayError();
+    void displayBallText(int ballNumber);
+    void displayExtraBall();
 }

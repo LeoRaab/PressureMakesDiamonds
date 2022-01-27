@@ -2,6 +2,10 @@ package PinballWizard.States;
 
 public class PlayingState implements GameState {
 
+    public PlayingState() {
+        printState();
+    }
+
     @Override
     public void nextState() {
         game.setState(new EndState());
@@ -14,7 +18,6 @@ public class PlayingState implements GameState {
 
     @Override
     public void printState() {
-        //Je nachdem welcher Ball gerade im Spiel ist
-        machine.displayFactory.displayBallThree();
+        machine.displayFactory.displayPlaying();
     }
 }

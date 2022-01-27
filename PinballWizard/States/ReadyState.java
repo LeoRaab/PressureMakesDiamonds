@@ -1,6 +1,11 @@
 package PinballWizard.States;
 
 public class ReadyState implements GameState {
+
+    public ReadyState() {
+        printState();
+    }
+
     @Override
     public void nextState() {
         game.setState(new PlayingState());

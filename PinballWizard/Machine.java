@@ -10,29 +10,33 @@ import PinballWizard.Components.TableElements.TableElement;
 import PinballWizard.Components.TableElements.TrapHole;
 import PinballWizard.Display.DisplayFactory;
 import PinballWizard.Display.DisplayFontBanner;
+import PinballWizard.Display.DisplayFontSwampLand;
+import PinballWizard.States.EndState;
 
 import java.util.ArrayList;
 
 public class Machine {
 
-    public DisplayFactory displayFactory = new DisplayFontBanner();
     private static Machine instance = null;
-    private int credit;
+    private final Game game = Game.Instance();
 
-    private ArrayList<TableElement> tableElements = new ArrayList<>();
-    private Flipper flipperLeft = new Flipper();
-    private Flipper flipperRight = new Flipper();
-    private Plunger plunger = new Plunger();
-    private ArrayList<Ball> balls = new ArrayList<>();
+    public DisplayFactory displayFactory = new DisplayFontBanner();
+    private final ArrayList<HitElementCommand> hitElements = new ArrayList<>();
+    private final ArrayList<Ball> balls = new ArrayList<>();
+    private final FlipperCommand flipperLeft = new FlipperCommand();
+    private final FlipperCommand flipperRight = new FlipperCommand();
+    private final PlungerCommand plunger = new PlungerCommand();
+
+    private int credit;
+    private Ball currentBall;
 
     private Machine() {
-        tableElements.add(new Bumper());
-        tableElements.add(new Bumper());
-        tableElements.add(new Bumper());
-        tableElements.add(new Ramp());
-        tableElements.add(new TrapHole());
-        tableElements.add(new TrapHole());
-        tableElements.add(new TrapHole());
+        hitElements.add(new BumperCommand());
+        hitElements.add(new BumperCommand());
+        hitElements.add(new BumperCommand());
+        hitElements.add(new RampCommand());
+        hitElements.add(new TrapHoleCommand());
+        hitElements.add(new TrapHoleCommand());
     }
 
     public static Machine Instance() {
@@ -40,6 +44,38 @@ public class Machine {
             instance = new Machine();
         }
         return instance;
+    }
+
+    public void shootBall() {
+        currentBall = balls.get(balls.size() - 1);
+
+        displayFactory.displayBallText(balls.size());
+        plunger.execute(currentBall);
+    }
+
+    public void handleLostBall() {
+        switch (balls.size()) {
+            case 3, 2 -> {
+                removeBall();
+                shootBall();
+            }
+            case 1 -> {
+                removeBall();
+                shootExtraBall();
+            }
+            case 0 -> {
+                game.nextState();
+            }
+            default -> {
+                displayFactory.displayError();
+                game.nextState();
+            }
+        }
+    }
+
+    private void shootExtraBall() {
+        displayFactory.displayExtraBall();
+        plunger.execute(new Ball());
     }
 
     public void setCredit(int credit) {
@@ -51,7 +87,7 @@ public class Machine {
     }
 
     public void removeCredit() {
-        credit --;
+        credit--;
     }
 
     public void addBalls() {
@@ -60,55 +96,20 @@ public class Machine {
         balls.add(new Ball());
     }
 
-    /**
-     * TODO: was passiert, wenn keiner mehr da ist
-     Rosi
-     */
     public void removeBall() {
-
         balls.remove(balls.size() - 1);
     }
 
-    public Ball useRandomBall() {
-        return balls.get((int) Math.floor(Math.random() * balls.size()));
-    }
-
-    public TableElement useRandomTableElement() {
-        return tableElements.get((int) Math.floor(Math.random() * tableElements.size()));
-    }
-
-    public void setTableElementAction(TableElement randomTableElement) {
-        if (randomTableElement.getClass() == TrapHole.class) {
-            System.out.println("Oh no, it's a trap hole!");
-        } // and so on ...
-    }
-
-    public void shootBall() {
-
-        Ball currentBall = useRandomBall();
-
-        plunger.shootBall();
-
-        /*
-        We basically wanted to create <insertClassName>Command with the tableElement but failed ...
-
-        TableElement randomTableElement = useRandomTableElement();
-        setTableElementAction(randomTableElement);
-
-        ... use that Class's command and execute that
-         */
-
-        currentBall.setHitElement(new PlungerCommand(plunger));
-        currentBall.hitElement();
-
+    public HitElementCommand getRandomHitElement() {
+        return hitElements.get((int) Math.floor(Math.random() * hitElements.size()));
     }
 
     public void hitLeftFlipper() {
-        flipperLeft.flip();
+        flipperLeft.execute(currentBall);
     }
 
     public void hitRightFlipper() {
-        flipperRight.flip();
+        flipperRight.execute(currentBall);
     }
 
 }

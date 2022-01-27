@@ -1,16 +1,13 @@
 package PinballWizard.Commands;
 
+import PinballWizard.Components.Ball;
 import PinballWizard.Components.TableElements.Bumper;
 
 public class BumperCommand implements HitElementCommand {
-    private Bumper bumper;
+    private final Bumper bumper = new Bumper();
 
-    public BumperCommand(Bumper bumper) {
-        this.bumper = bumper;
-    }
-
-    public void execute() {
+    public void execute(Ball ball) {
         bumper.isHit();
-        bumper.doAction();
+        bumper.doAction(ball);
     }
 }

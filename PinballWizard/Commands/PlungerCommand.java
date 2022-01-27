@@ -1,16 +1,13 @@
 package PinballWizard.Commands;
 
+import PinballWizard.Components.Ball;
 import PinballWizard.Components.Plunger;
 
 public class PlungerCommand implements HitElementCommand {
-    private Plunger plunger;
+    private final Plunger plunger = new Plunger();
 
-    public PlungerCommand(Plunger plunger) {
-        this.plunger = plunger;
-    }
-
-    public void execute() {
-        plunger.shootBall();
+    public void execute(Ball ball) {
+        plunger.shootBall(ball);
     }
 
 }

@@ -1,16 +1,13 @@
 package PinballWizard.Commands;
 
+import PinballWizard.Components.Ball;
 import PinballWizard.Components.TableElements.TrapHole;
 
 public class TrapHoleCommand implements HitElementCommand {
-    private TrapHole trapHole;
+    private final TrapHole trapHole = new TrapHole();
 
-    public TrapHoleCommand(TrapHole trapHole) {
-        this.trapHole = trapHole;
-    }
-
-    public void execute() {
+    public void execute(Ball ball) {
         trapHole.isHit();
-        trapHole.doAction();
+        trapHole.doAction(ball);
     }
 }

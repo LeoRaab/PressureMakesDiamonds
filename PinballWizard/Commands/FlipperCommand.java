@@ -1,15 +1,12 @@
 package PinballWizard.Commands;
 
+import PinballWizard.Components.Ball;
 import PinballWizard.Components.Flipper;
 
 public class FlipperCommand implements HitElementCommand {
-    private Flipper flipper;
+    private final Flipper flipper = new Flipper();
 
-    public FlipperCommand(Flipper flipper) {
-        this.flipper = flipper;
-    }
-
-    public void execute() {
+    public void execute(Ball ball) {
         flipper.flip();
     }
 }

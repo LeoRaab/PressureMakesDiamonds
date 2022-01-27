@@ -1,18 +1,30 @@
 package PinballWizard;
 
-import PinballWizard.Components.Ball;
-
 import static PinballWizard.States.GameState.game;
 import static PinballWizard.States.GameState.machine;
 
 public class Player {
+
+    private static Player instance = null;
+
+    private Player() {
+    }
+
+    public static Player Instance() {
+        if (instance == null) {
+            instance = new Player();
+        }
+        return instance;
+    }
+
     public void insertCoins(int amount) {
         machine.setCredit(amount);
     }
 
     public void startGame() {
-        game.nextState();
         machine.addBalls();
+        machine.removeCredit();
+        game.nextState();
         machine.shootBall();
     }
 

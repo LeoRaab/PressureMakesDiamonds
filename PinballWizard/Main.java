@@ -1,13 +1,14 @@
 package PinballWizard;
 
+import PinballWizard.States.NoCreditState;
+
 public class Main {
     public static void main(String[] args) {
 
-        Machine machine = Machine.Instance();
         Game game = Game.Instance();
+        Player player = Player.Instance();
 
-        Player player = new Player();
-
+        game.setState(new NoCreditState());
         player.insertCoins(3);
         game.nextState();
 
