@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>PinballWizard</OriginalElement>
+  <nodes>
+    <node x="219.0" y="58.0">PinballWizard.Commands</node>
+    <node x="0.0" y="393.0">PinballWizard.States</node>
+    <node x="219.0" y="319.0">PinballWizard.Display</node>
+    <node x="72.24404761904762" y="245.0">PinballWizard.Main</node>
+    <node x="39.74404761904762" y="164.0">PinballWizard.Player</node>
+    <node x="202.2440476190476" y="0.0">PinballWizard.Components</node>
+    <node x="0.0" y="81.0">PinballWizard.Machine</node>
+    <node x="181.0" y="393.0">PinballWizard..idea</node>
+    <node x="29.833333333333343" y="0.0">PinballWizard.Game</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="PinballWizard.Main" target="PinballWizard.Game" relationship="DEPENDENCY">
+      <point x="0.0" y="-14.5" />
+      <point x="114.74404761904762" y="219.0" />
+      <point x="147.24404761904762" y="219.0" />
+      <point x="147.24404761904762" y="60.0" />
+      <point x="119.50000000000001" y="60.0" />
+      <point x="119.50000000000001" y="50.0" />
+      <point x="98.08333333333334" y="50.0" />
+      <point x="22.75" y="14.5" />
+    </edge>
+    <edge source="PinballWizard.Player" target="PinballWizard.Machine" relationship="DEPENDENCY">
+      <point x="0.0" y="-14.5" />
+      <point x="86.24404761904762" y="137.0" />
+      <point x="54.5" y="137.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="PinballWizard.Machine" target="PinballWizard.Game" relationship="TO_ONE">
+      <point x="-27.25" y="-14.5" />
+      <point x="27.25" y="60.0" />
+      <point x="52.58333333333334" y="60.0" />
+      <point x="-22.75" y="14.5" />
+    </edge>
+    <edge source="PinballWizard.Player" target="PinballWizard.Game" relationship="DEPENDENCY">
+      <point x="0.0" y="-14.5" />
+      <point x="86.24404761904762" y="137.0" />
+      <point x="119.5" y="137.0" />
+      <point x="119.50000000000001" y="50.0" />
+      <point x="98.08333333333334" y="50.0" />
+      <point x="22.75" y="14.5" />
+    </edge>
+    <edge source="PinballWizard.Machine" target="PinballWizard.Game" relationship="DEPENDENCY">
+      <point x="27.25" y="-14.5" />
+      <point x="81.75" y="60.0" />
+      <point x="119.50000000000001" y="60.0" />
+      <point x="119.50000000000001" y="50.0" />
+      <point x="98.08333333333334" y="50.0" />
+      <point x="22.75" y="14.5" />
+    </edge>
+    <edge source="PinballWizard.Main" target="PinballWizard.Player" relationship="DEPENDENCY">
+      <point x="0.0" y="-14.5" />
+      <point x="114.74404761904762" y="219.0" />
+      <point x="86.24404761904762" y="219.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="193.0" y="211.0" />
+  <SelectedNodes>
+    <node>PinballWizard.Commands</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
